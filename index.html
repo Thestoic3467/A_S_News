@@ -3,537 +3,251 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anganwadi Events Gallery</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <title>ACCP News App</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
     <style>
-        /* Global Styles */
-        :root {
-            /* Colors */
-            --primary-color: #009688;
-            --secondary-color: #0C0A3E;
-            --accent-color: #ff8c00;
-            --text-color: #fff;
-            --background-color: #f5f5f5;
-
-            /* Typography */
-            --font-league_spartan: 'League Spartan', sans-serif;
-            --font-poppins: 'Poppins', sans-serif;
-            --font-size-1: 4.2rem;
-            --font-size-2: 3.2rem;
-            --font-size-3: 2.3rem;
-            --font-size-4: 1.8rem;
-            --font-size-5: 1.5rem;
-            --font-size-6: 1.4rem;
-            --font-size-7: 1.3rem;
-            --font-weight-500: 500;
-            --font-weight-600: 600;
-
-            /* Spacing */
-            --section-padding: 75px;
-
-            /* Shadow */
-            --shadow-1: 0 6px 15px 0 rgba(0, 0, 0, 0.05);
-            --shadow-2: 0 10px 30px rgba(0, 0, 0, 0.06);
-            --shadow-3: 0 10px 50px 0 rgba(0, 0, 0, 0.1);
-
-            /* Radius */
-            --radius-pill: 500px;
-            --radius-circle: 50%;
-            --radius-3: 3px;
-            --radius-5: 5px;
-            --radius-10: 10px;
-
-            /* Transition */
-            --transition-1: 0.25s ease;
-            --transition-2: 0.5s ease;
-        }
-
-        /* Body Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--background-color);
-            padding: 20px;
+        /* General Styles */
+        * {
+            padding: 0;
             margin: 0;
+            box-sizing: border-box;
         }
 
-        /* Navbar Styles */
-        .navbar {
-            background-color: var(--primary-color);
+        :root {
+            --primary-text-color: #183b56;
+            --secondary-text-color: #577592;
+            --accent-color: #2294ed;
+            --accent-color-dark: #f81010;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            /* Use Roboto font for the entire body */
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            padding-top: 100px;
+            /* Add padding to the top */
+            /* Add padding to the top */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        nav {
+            background-color: #f3fbff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            overflow: hidden;
+            /* Ensure content within the header does not overflow */
+        }
+
+        .main-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 8px 0;
         }
 
-        .navbar-list {
-            list-style: none;
+        .company-logo img {
+            width: 50px;
+        }
+
+        .nav-links ul {
             display: flex;
-            margin: auto;
+            gap: 16px;
         }
 
-        .navbar-item {
-            margin-right: 20px;
+        .nav-links a {
+            color: var(--primary-text-color);
+            transition: color 0.3s ease;
         }
 
-        .navbar-link {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .navbar-link:hover {
+        .nav-links a:hover {
             color: var(--accent-color);
         }
 
-        /* Button Styles */
-        .btn {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border: none;
-            padding: 10px 20px;
-            text-decoration: none;
-            cursor: pointer;
-            border-radius: var(--radius-5);
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
+        /* Main Content Styles */
+        main {
+            padding-top: 100px;
+            /* Ensure content does not get hidden behind the header */
         }
 
         /* Footer Styles */
-        .footer {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            font-size: var(--font-size-9);
-            padding: 10px;
+        footer {
+            left: 0;
+            right: 0;
+            z-index: 999;
         }
 
-        .footer-top {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        /* Iframe Styles */
+        iframe {
+            width: 100%;
+            /* Ensure iframes fill their container */
+            height: 100%;
+            /* Ensure iframes fill their container */
+            border: none;
+            /* Remove iframe border */
         }
 
-        .footer-brand,
-        .footer-list,
-        .footer-list:last-child {
-            margin-bottom: 30px;
-        }
-
-        .footer-list-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .footer-link {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-link:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-list-text {
+        /* Card Styles */
+        .card {
+            box-shadow: 0 0 4px #d4ecff;
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
             margin-bottom: 20px;
         }
 
-        .footer-bottom {
-            margin-top: 50px;
-            border-top: 1px solid var(--primary-color);
-            padding-top: 20px;
+        .card:hover {
+            box-shadow: 1px 1px 8px #d4ecff;
+            transform: translateY(-2px);
         }
 
-        .social-list {
-            display: flex;
-            gap: 10px;
+        .card .card-body {
+            padding: 1.5rem;
         }
 
-        .social-link {
-            color: var(--text-color);
-            text-decoration: none;
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
 
-        .social-link ion-icon {
-            font-size: 24px;
-            transition: color 0.3s;
+        .card-text {
+            color: var(--secondary-text-color);
         }
 
-        .social-link:hover ion-icon {
-            color: var(--accent-color);
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 8px 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            /* Use Roboto font for buttons */
         }
 
-        .container {
-            margin-bottom: 50px;
-            /* Adjust this value as needed */
+        .btn-primary:hover {
+            background-color: var(--accent-color-dark);
         }
 
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .navbar-list {
-                margin: 10px 0;
-            }
-
-            .navbar-item {
-                margin: 10px 0;
-            }
-
-            .btn {
-                margin-top: 10px;
-            }
-
-            .footer {
-                font-size: var(--font-size-6);
-            }
-        }
-
-        /* Additional Styles */
-        .container {
-            max-width: 960px;
-            width: 100%;
-            margin: auto;
-        }
-
-        .section {
-            padding: var(--section-padding);
-        }
-
-        .grid-list {
-            display: grid;
-            gap: 30px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        }
-
-        /* Specific Styles */
-        .gallery .image-container .image {
-            height: 300px;
-            width: 100%;
-            overflow: hidden;
-            border-radius: var(--radius-5);
-        }
-
-        .card {
-            border-radius: var(--radius-5);
-            overflow: hidden;
-        }
-
-        .card img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            border-radius: var(--radius-5);
-        }
-
-        .card:hover .description {
-            max-height: none;
+        h2,
+        .card-title {
+            font-family: 'Roboto', sans-serif;
+            /* Use Roboto font for headings */
         }
     </style>
 </head>
 
 <body>
-
-    <header class="navbar">
-        <a href="#" class="logo">
-            <img src="https://github.com/AdityaD20/3RD-YEAR-PROJECT/blob/main/images/left_logo.png?raw=true"
-                width="auto" height="100" alt="training logo">
-        </a>
-        <ul class="navbar-list">
-            <li class="navbar-item"><a href="index.html" class="navbar-link">Home</a></li>
-            <li class="navbar-item"><a href="poshan.html" class="navbar-link">Poshan Calculator</a></li>
-            <li class="navbar-item"><a href="gallery.html" class="navbar-link">Gallery</a></li>
-            <li class="navbar-item"><a href="news.html" class="navbar-link">News</a></li>
-            <li class="navbar-item"><a href="training.html" class="navbar-link">Training</a></li>
-            <li class="navbar-item"><a href="MPR.html" class="navbar-link">MPR</a></li>
-            <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
-            <li class="navbar-item"><a href="community.html" class="navbar-link">Community</a></li>
-        </ul>
-
-        <div class="header-actions">
-            <a href="https://chat.whatsapp.com/Gv5pyhb8eNK9fjulZQ4kby" class="btn has-before">
-                <span class="span">Join our WhatsApp</span>
-                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-            <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-            </button>
+    <nav>
+        <div class="container main-nav">
+            <!-- Include the header.html using iframe -->
+            <iframe id="headerFrame" src="header.html" frameborder="0"></iframe>
         </div>
-        <div class="overlay" data-nav-toggler data-overlay></div>
-    </header>
+    </nav>
 
-    <div class="social-icons">
-        <a href="#" target="_blank"><i class="fab fa-instagram fa"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-facebook fa"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-twitter fa"></i></a>
-    </div>
-
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2 class="text-center mb-4">Anganwadi Events Gallery</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="districtSelect">Choose District</label>
+    <main>
+        <div class="container">
+            <!-- News Cards Section -->
+            <h2 class="text-center mb-4">News Updates Section</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Recruitment / Vacancies</h5>
+                            <p class="card-text">Visit this link to view latest Recruitment news</p>
+                            <a href="https://wcd.nic.in/archive-notification/2319" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
                     </div>
-                    <select class="custom-select" id="districtSelect">
-                        <option value="all">All Districts</option>
-                        <option value="Mumbai">Mumbai</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Ahmednagar">Ahmednagar</option>
-                        <option value="Akola">Akola</option>
-                        <option value="Amravati">Amravati</option>
-                        <option value="Aurangabad">Aurangabad</option>
-                        <option value="Beed">Beed</option>
-                        <option value="Bhandara">Bhandara</option>
-                        <option value="Buldhana">Buldhana</option>
-                        <option value="Chandrapur">Chandrapur</option>
-                        <option value="Dhule">Dhule</option>
-                        <option value="Gadchiroli">Gadchiroli</option>
-                        <option value="Gondia">Gondia</option>
-                        <option value="Hingoli">Hingoli</option>
-                        <option value="Jalgaon">Jalgaon</option>
-                        <option value="Jalna">Jalna</option>
-                        <option value="Kolhapur">Kolhapur</option>
-                        <!-- Add other districts here -->
-                    </select>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Schemes</h5>
+                            <p class="card-text">Visit this link to view all the Schemes introduced by ICDS</p>
+                            <a href="https://icds.gov.in/Forms/Schemes.aspx" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Latest news</h5>
+                            <p class="card-text">Visit this link to view latest news</p>
+                            <a href="https://icds.gov.in/Forms/View_News.aspx" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Meetings / Events</h5>
+                            <p class="card-text">Visit this link to view latest Events news</p>
+                            <a href="https://wcd.nic.in/archive-notification/2317" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Annual Reports</h5>
+                            <p class="card-text">Visit this link to view latest Recruitment news</p>
+                            <a href="https://wcd.nic.in/annual-report" target="_blank" class="btn btn-primary">Read
+                                More</a>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="container">
-        <div class="row" id="imageContainer">
-            <!-- Images will be dynamically added here -->
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-
-            // Object to store image information
-            var images = {
-                'Mumbai': [
-                    { description: "Learning Together", imageUrl: 'https://csrbox.org/full_stories_img/1660274737IMG-20220715-WA0007.jpg', date: ' May 12, 2023' },
-                    { description: "Door to door health checkup in view of Corona Lockdown", imageUrl: 'https://www.indiaspend.com/h-upload/old_images/1500x900_342730-bihar-screening1440.jpg', date: ' May 25, 2021' },
-                    { description: "Teaching students at an Anganwadi centre", imageUrl: 'https://media.assettype.com/TNIE/import/2018/7/31/original/ANGAN11_13-10-2008_12_24_43.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true', date: ' April 26, 2018' },
-                ],
-                'Pune': [
-                    { description: 'Planning a Workshop', imageUrl: 'https://static.toiimg.com/thumb/msid-105741355,width-1070,height-580,imgsize-239588,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg', date: 'December 20, 2015' },
-                    { description: "Empowering Mothers and Children: Unveiling Government Initiatives through Anganwadi Services", imageUrl: 'https://assets.thehansindia.com/h-upload/2020/08/31/1600x960_995388-anganwadi.jpg', date: ' May 29, 2023' },
-                    { description: 'ECCE day', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBXIQ5NQJnx0ztPKQ_WI5EnqwWrFcKviwHGRDyxnZlNZSAXbkA09wIfpIgqx00qMIl_Mk&usqp=CAU', date: 'October 3, 2022' },
-                    { description: 'Strengthening Early childhood Education Workshop prep', imageUrl: 'https://www.tatatrusts.org/Upload/Images/thumbnail/childhood-education-thumb.jpg', date: ' December 7, 2018' },
-                    { description: 'Empowering Change agents', imageUrl: 'https://i.kinja-img.com/image/upload/c_fill,h_900,q_60,w_1600/2b84a2ddb791338aaccbd4f86d9fea6b.jpg', date: 'August 8, 2016' },
-                    { description: 'Renovation of an Anganwadi Centre', imageUrl: 'https://d1ns4ht6ytuzzo.cloudfront.net/oxfamdata/oxfamdatapublic/styles/news_detail_748x373/public/2023-04/WhatsApp%20Image%202023-04-17%20at%201.43.18%20PM_0.jpeg?nI9k1d51rrMxNorceYytLa4u50ZVuB4V&itok=QnoKsFSl', date: 'February 20, 2024' },
-
-                ],
-                'Ahmednagar': [
-                    { description: 'Students engaging in group activities to enhance collaborative skills', imageUrl: 'https://w.ndtvimg.com/sites/3/2023/04/25173059/anganwadi-centre-delhi.jpg', date: 'June 5, 2023' },
-                    { description: 'ECCE Day', imageUrl: 'https://scontent.fbom3-1.fna.fbcdn.net/v/t1.6435-9/70764567_128652405170684_8390463859663568896_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FanO7Vs1StAAb54aUBz&_nc_ht=scontent.fbom3-1.fna&oh=00_AfDo4Fi90LJNZmeWTlOSHxBnAOSF7Fs3zu5j5NM4uFs_rA&oe=664D6E4E', date: 'August 8, 2023' },
-                    { description: 'Renovation model', imageUrl: 'https://media.assettype.com/knocksense%2F2022-06%2Fd78bbd16-8a0f-419b-a50b-bf5f6aafe7d2%2FAEFF1D59_DB7A_454C_9C89_D897AE89B836.jpeg', date: 'October 3, 2023' },
-                    { description: 'Distribution of essentials for children', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPWMTCv_EX4tFGXkueiexaM1lE_Tfcg8ZHGcoju18OZQ&s', date: ' December 7, 2023' },
-
-                ],
-                'Akola': [
-                    { description: "Anganwadi Sevika Inspiring Young Minds: A Vibrant Canvas of Learning", imageUrl: 'https://indiaeducationdiary.in/wp-content/uploads/2020/07/UN0157904.jpg', date: ' May 12, 2023' },
-                    { description: 'ECCE Day', imageUrl: 'https://scontent.fbom3-2.fna.fbcdn.net/v/t1.6435-9/70447943_128652391837352_7266433784013127680_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=yvow0ocMQksAb58ieHo&_nc_ht=scontent.fbom3-2.fna&oh=00_AfAUdirdraEXbyJJkHbFAIZZCZ_qwl4zy_yCzwX6ML_4DQ&oe=664D6253', date: 'August 8, 2023' },
-                ],
-            };
-
-            $('#districtSelect').change(function () {
-                var selectedDistrict = $(this).val();
-                filterImages(selectedDistrict);
-            });
-
-            function filterImages(district) {
-                $('#imageContainer').empty(); // Clear previous images
-
-                if (district === 'all') {
-                    $.each(images, function (district, imagesArray) {
-                        imagesArray.forEach(function (image) {
-                            addImage(district, image);
-                        });
-                    });
-                } else {
-                    images[district].forEach(function (image) {
-                        addImage(district, image);
-                    });
-                }
-            }
-
-            function addImage(district, image) {
-                var imageHtml = `
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <img src="${image.imageUrl}" class="card-img-top" alt="${image.description}">
-                    <div class="card-body">
-                        <h5 class="card-title">${image.description}</h5>
-                        <div class="card-text">
-                            <p>District: ${district}</p>
-                            <p class="card-text">Date: ${image.date}</p>
-                            <!-- Add more details here if needed -->
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tenders</h5>
+                            <p class="card-text">Visit this link to view latest Events news</p>
+                            <a href="https://wcd.nic.in/past-tenders" target="_blank" class="btn btn-primary">Read
+                                More</a>
                         </div>
                     </div>
                 </div>
             </div>
-        `;
-                $('#imageContainer').append(imageHtml);
-            }
-
-        });
-    </script>
-
-    <footer class="footer" style="background-image: url('images/footer-bg.png')">
-        <div class="footer-top section">
-            <div class="container grid-list">
-                <div class="footer-brand">
-                    <p class="footer-brand-text">
-                        "Unlock your potential and empower your community! Join us for a transformative training
-                        experience as an Anganwadi Sevika today."
-                    </p>
-                    <div class="wrapper">
-                        <span class="span">Add:</span>
-                        <address class="address">70-80 Upper St mumbai NR2</address>
-                    </div>
-                    <div class="wrapper">
-                        <span class="span">Call:</span>
-                        <a href="tel:+011234567890" class="footer-link">+01 123 4567 890</a>
-                    </div>
-                    <div class="wrapper">
-                        <span class="span">Email:</span>
-                        <a href="mailto:nutandindemumbai@.com" class="footer-link">adityadinde@gmail.com</a>
-                    </div>
-                </div>
-                <ul class="footer-list">
-                    <li>
-                        <p class="footer-list-title">Online Platform</p>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">About</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Courses</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Instructors</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Event's</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Instructor Profile</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Learning Guide</a>
-                    </li>
-                </ul>
-                <ul class="footer-list">
-                    <li>
-                        <p class="footer-list-title">Links</p>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Poshan Calculator</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">New's</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Training</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">MPR</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">signin/signup</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Contact</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Community</a>
-                    </li>
-                </ul>
-                <div class="footer-list">
-                    <p class="footer-list-title">Contacts</p>
-                    <p class="footer-list-text">
-                        Enter your email address to get in connect with us and follow us
-                    </p>
-                    <form action="https://formsubmit.co/nutandindemumbai@gmail.com" class="newsletter-form"
-                        method="post">
-                        <input type="email" name="email_address" placeholder="Your email" required class="input-field">
-                        <button type="submit" class="btn has-before">
-                            <span class="span">Send</span>
-                            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </form>
-                    <ul class="social-list">
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-linkedin"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-twitter"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-youtube"></ion-icon>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
-        <div class="footer-bottom">
-            <p class="copyright">
-                &copy; 2024 Made By AdiD20. All rights reserved. <a href="#" class="copyright-link">Terms of Service</a>
-                and <a href="#" class="copyright-link">Privacy Policy</a>.
-            </p>
-        </div>
-    </footer>
+    </main>
 
-
+    <!-- JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
